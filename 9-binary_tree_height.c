@@ -30,6 +30,6 @@ size_t Recursive_helper(const binary_tree_t *tree)
 
 
 	if (Height_left > Height_right) /* Get the longest height */
-		return(Height_left + 1);
+		return (Height_left + 1);
 	return (Height_right + 1);
 }

@@ -8,14 +8,27 @@ size_t Recursive_helper(const binary_tree_t *tree);
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
+	if (!tree)
+		return (0);
+
+	return (binary_tree_balance(tree->left) == binary_tree_balance(tree->right));
+}
+
+/**
+ * binary_tree_balance - Gets the balance factor of a binary tree
+ * @tree: Binary tree
+ * Return: Balance factor of tree 'tree'
+ */
+int binary_tree_balance(const binary_tree_t *tree)
+{
 	int left = 0, right = 0;
 
-	if (!tree)
+	if (!tree || (!tree->left && !tree->right))
 		return (0);
 
 	left = binary_tree_height(tree->left);
 	right = binary_tree_height(tree->right);
-	return (left == right);
+	return (left - right);
 }
 
 /**
@@ -28,7 +41,7 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	return (Recursive_helper(tree) - 1);
+	return (Recursive_helper(tree));
 }
 
 /**
